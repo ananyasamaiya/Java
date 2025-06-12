@@ -39,5 +39,22 @@ public class Account {
     public ArrayList<String> getTransactionHistory(){
         return transactionHistory;
     }
+
+    public void saveAccount(){
+        File file = new File("account.txt");
+        if(file.createNewFile()){
+            System.out.println("File 'account.txt created :");
+        }
+
+        FileWriter writer = new FileWriter(file, true);
+        writer.write("Name : " + name + "\n");
+        writer.write("Account Number : " + accountNumber + "\n");
+        writer.write("Balance : " + balance + "\n");
+
+        System.out.println("Account details saved to file.");
+    }  catch(IOException e){
+            System.out.println("An error occured");
+            e.printStackTrace();
+    }
     
 }
